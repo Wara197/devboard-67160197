@@ -5,6 +5,18 @@ function UserCard({ name, email }) {
     .map((n) => n[0])
     .join("");
 
+  const fiestchar = name[0].toUpperCase(); // ดึงตัวอักษรแรกและแปลงเป็นตัวพิมพ์ใหญ่
+  let ByColer = "1e40af"; // กำหนดสีเริ่มต้นเป็นสีน้ำเงิน
+  if (fiestchar >= "A" && fiestchar <= "G") {
+    // ตรวจสอบช่วงตัวอักษรเพื่อกำหนดสี
+    ByColer = "1e40af"; // สีน้ำเงินสำหรับ A-G
+  } else if (fiestchar >= "H" && fiestchar <= "N") {
+    // สีน้ำเงินเข้มสำหรับ G-M
+    ByColer = "16a34a"; // สีเขียวสำหรับ H-N
+  } else {
+    ByColer = "7e22ce"; // สีม่วงสำหรับตัวอักษรอื่นๆ
+  }
+
   return (
     <div
       style={{
@@ -22,7 +34,7 @@ function UserCard({ name, email }) {
         style={{
           width: "40px",
           height: "40px",
-          background: "#1e40af",
+          background: `#${ByColer}`, // ใช้สีที่กำหนดตามตัวอักษรแรก
           color: "white",
           borderRadius: "50%",
           display: "flex",
