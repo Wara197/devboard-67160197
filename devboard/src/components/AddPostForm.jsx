@@ -13,6 +13,8 @@ function AddPostForm({ onAddPost }) {
     setBody("");
   }
 
+  const isTitleNearLimit = title.length > 90; // เตือนถ้าใกล้ถึง 100 ตัวอักษร
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -27,23 +29,33 @@ function AddPostForm({ onAddPost }) {
       <h3 style={{ margin: "0 0 0.75rem", color: "#2d3748" }}>
         เพิ่มโพสต์ใหม่
       </h3>
-
-      <input
-        type="text"
-        placeholder="หัวข้อโพสต์"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "0.5rem",
-          marginBottom: "0.5rem",
-          border: "1px solid #cbd5e0",
-          borderRadius: "4px",
-          fontSize: "1rem",
-          boxSizing: "border-box",
-        }}
-      />
-
+      <div style={{ marginBottom: "0.5rem" }}>
+        <input
+          type="text"
+          placeholder="หัวข้อโพสต์"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          maxLength={100} // จำกัดตัวอักษรที่ 100
+          style={{
+            width: "100%",
+            padding: "0.5rem",
+            marginBottom: "0.25rem", // ลด margin ล่างนิดหน่อยเพื่อให้ตัวนับอยู่ชิดขึ้น
+            border: "1px solid #cbd5e0",
+            borderRadius: "4px",
+            fontSize: "1rem",
+            boxSizing: "border-box",
+          }}
+        />
+        <div
+          style={{
+            textAlign: "right",
+            fontSize: "0.8rem",
+            color: isTitleNearLimit ? "red" : "#a0aec0",
+          }}
+        >
+          {title.length}/100
+        </div>
+      </div>
       <textarea
         placeholder="เนื้อหาโพสต์"
         value={body}
