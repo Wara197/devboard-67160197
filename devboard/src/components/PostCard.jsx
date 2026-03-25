@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext";
 import CommentList from "./CommentList";
 
-function PostCard({ post, isFavorite, onToggleFavorite }) {
+function PostCard({ post }) {
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorite = favorites.includes(post.id);
   const [showComments, setShowComments] = useState(false);
 
   return (
@@ -14,13 +18,20 @@ function PostCard({ post, isFavorite, onToggleFavorite }) {
         background: "white",
       }}
     >
-      <h3 style={{ margin: "0 0 0.5rem", color: "#1e40af" }}>{post.title}</h3>
+      <h3 style={{ margin: "0 0 0.5rem" }}>
+        <Link
+          to={`/posts/${post.id}`}
+          style={{ color: "#1e40af", textDecoration: "none" }}
+        >
+          {post.title}
+        </Link>
+      </h3>
       <p style={{ margin: "0 0 0.75rem", color: "#4a5568", lineHeight: 1.6 }}>
         {post.body}
       </p>
       <div style={{ display: "flex", gap: "0.5rem" }}>
         <button
-          onClick={onToggleFavorite}
+          onClick={() => toggleFavorite(post.id)}
           style={{
             background: "none",
             border: "none",

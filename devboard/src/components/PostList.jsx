@@ -3,7 +3,8 @@ import PostCount from "./PostCount"; // นำเข้า PostCount เพื�
 import PostCard from "./PostCard";
 import LoadingSpinner from "./LoadingSpinner";
 
-function PostList({ favorites, onToggleFavorite }) {
+// farorites = array ของ postId ที่ถูก mark ว่าเป็น favorite
+function PostList({ favorites = [], onToggleFavorite }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
