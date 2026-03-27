@@ -1,16 +1,19 @@
 function UserCard({ name, email }) {
   // ดึงตัวอักษรแรกมาทำ avatar
   const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join("");
+    .split(" ") // แยกชื่อเป็นคำๆ
+    .map((n) => n[0]) // ดึงตัวอักษรแรกของแต่ละคำ
+    .join(""); // รวมตัวอักษรแรกเข้าด้วยกัน
 
-  const fiestchar = name[0].toUpperCase(); // ดึงตัวอักษรแรกและแปลงเป็นตัวพิมพ์ใหญ่
+  {
+    /*  Challenge:1.2 Avatar หลากสี */
+  }
+  const firstchar = name[0].toUpperCase(); // ดึงตัวอักษรแรกและแปลงเป็นตัวพิมพ์ใหญ่
   let ByColer = "1e40af"; // กำหนดสีเริ่มต้นเป็นสีน้ำเงิน
-  if (fiestchar >= "A" && fiestchar <= "G") {
+  if (firstchar >= "A" && firstchar <= "G") {
     // ตรวจสอบช่วงตัวอักษรเพื่อกำหนดสี
     ByColer = "1e40af"; // สีน้ำเงินสำหรับ A-G
-  } else if (fiestchar >= "H" && fiestchar <= "N") {
+  } else if (firstchar >= "H" && firstchar <= "N") {
     // สีน้ำเงินเข้มสำหรับ G-M
     ByColer = "16a34a"; // สีเขียวสำหรับ H-N
   } else {

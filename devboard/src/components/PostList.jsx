@@ -59,7 +59,8 @@ function PostList({ favorites = [], onToggleFavorite }) {
       >
         โพสต์ล่าสุด
       </h2>
-      <PostCount count={posts.length} /> {/* แสดงจำนวนโพสต์ทั้งหมด */}
+      <PostCount count={posts.length} />{" "}
+      {/*  Challenge:1.1 แสดงจำนวนโพสต์ทั้งหมด */}
       {/* Search Input */}
       <input
         type="text"

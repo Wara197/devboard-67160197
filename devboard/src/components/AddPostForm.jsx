@@ -12,8 +12,8 @@ function AddPostForm({ onAddPost }) {
     setTitle(""); // เคลียร์ form
     setBody("");
   }
-
-  const isTitleNearLimit = title.length > 90; // เตือนถ้าใกล้ถึง 100 ตัวอักษร
+  //Challenge:2.1 ตัวนับตัวอักษรในหัวข้อโพสต์
+  const isTitleLimit = title.length > 90; // เตือนถ้าใกล้ถึง 100 ตัวอักษร
 
   return (
     <form
@@ -34,23 +34,24 @@ function AddPostForm({ onAddPost }) {
           type="text"
           placeholder="หัวข้อโพสต์"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)} // เพิ่ม onChange เพื่ออัปเดต title
           maxLength={100} // จำกัดตัวอักษรที่ 100
           style={{
             width: "100%",
             padding: "0.5rem",
-            marginBottom: "0.25rem", // ลด margin ล่างนิดหน่อยเพื่อให้ตัวนับอยู่ชิดขึ้น
+            marginBottom: "0.25rem",
             border: "1px solid #cbd5e0",
             borderRadius: "4px",
             fontSize: "1rem",
             boxSizing: "border-box",
           }}
         />
+        {/* ช่วยเตื่อนว่าใกล้ถึง limit */}
         <div
           style={{
             textAlign: "right",
             fontSize: "0.8rem",
-            color: isTitleNearLimit ? "red" : "#a0aec0",
+            color: isTitleLimit ? "red" : "#a0aec0", // เปลี่ยนสีถ้าใกล้ถึง limit
           }}
         >
           {title.length}/100
