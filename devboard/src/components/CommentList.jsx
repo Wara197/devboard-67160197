@@ -6,6 +6,7 @@ function CommentList({ postId }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //useEffect การทำงานหลังจาก component ถูก render ครั้งแรก และทุกครั้งที่ postId เปลี่ยนแปลง
   useEffect(() => {
     async function fetchComments() {
       try {

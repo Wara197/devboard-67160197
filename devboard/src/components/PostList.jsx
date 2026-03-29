@@ -5,10 +5,10 @@ import LoadingSpinner from "./LoadingSpinner";
 
 // farorites = array ของ postId ที่ถูก mark ว่าเป็น favorite
 function PostList({ favorites = [], onToggleFavorite }) {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [search, setSearch] = useState("");
+  const [posts, setPosts] = useState([]); //useState สำหรับเก็บโพสต์ที่ดึงมาจาก API
+  const [loading, setLoading] = useState(true); //useState สำหรับสถานะการโหลดข้อมูล
+  const [error, setError] = useState(null); //useState สำหรับเก็บข้อความ error หากเกิดข้อผิดพลาดในการดึงข้อมูล
+  const [search, setSearch] = useState(""); //useState สำหรับเก็บข้อความค้นหาที่ผู้ใช้พิมพ์เข้ามา
 
   useEffect(() => {
     async function fetchPosts() {
@@ -66,7 +66,7 @@ function PostList({ favorites = [], onToggleFavorite }) {
         type="text"
         placeholder="ค้นหาโพสต์..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)} // อัปเดต search state ตามที่ผู้ใช้พิมพ์
         style={{
           width: "100%",
           padding: "0.5rem 0.75rem",

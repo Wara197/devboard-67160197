@@ -5,7 +5,7 @@ function AddPostForm({ onAddPost }) {
   const [body, setBody] = useState("");
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); // e.preventDefault() ใช้เพื่อป้องกันการรีเฟรชหน้าเมื่อฟอร์มถูกส่ง
     if (!title.trim() || !body.trim()) return; // ป้องกันส่งว่าง
 
     onAddPost({ title, body });
